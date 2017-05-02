@@ -1,25 +1,11 @@
 {
-  "name": "augury",
+  "name": "ChromeExtensionTest",
   "version": "1.7.0",
-  "description": "Chrome Developer Tools Extension for inspecting Angular 2.0 applications",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rangle/augury.git"
-  },
-  "keywords": [
-    "angular",
-    "angularjs",
-    "chrome",
-    "extension"
-  ],
+  "description": "Testing code injection in a chrome extension with activeTab and browserAction.",
   "engines": {
     "node": ">= 4.2.3 < 6",
     "npm": ">= 3.5.3"
   },
-  "bugs": {
-    "url": "https://github.com/rangle/augury/issues"
-  },
-  "homepage": "https://github.com/rangle/augury",
   "scripts": {
     "prod-build": "webpack --optimize-dedupe",
     "build": "webpack --colors --display-error-details --display-cached",

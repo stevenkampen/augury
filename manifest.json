@@ -1,31 +1,21 @@
 {
-  "name": "Augury",
-  "short_name": "Augury",
-  "version": "1.7.0",
-  "description": "Extends the Developer Tools, adding tools for debugging and profiling Angular 2.0 applications.",
+  "name": "ChromeExtensionTest",
+  "short_name": "ChromeExtensionTest",
+  "version": "1.0.0",
+  "description": "This is a test.",
   "permissions": [
-    "storage"
+    "activeTab"
   ],
   "browser_action": {
     "default_icon": "images/augury.png",
-    "default_popup": "popup.html"
+    "default_title": "Run Augury"
   },
-  "devtools_page": "index.html",
   "background": {
     "scripts": [
       "build/background.js"
     ],
     "persistent": false
   },
-  "content_scripts": [{
-    "matches": [
-      "<all_urls>"
-    ],
-    "js": [
-      "build/content-script.js"
-    ],
-    "run_at": "document_end"
-  }],
   "web_accessible_resources": [
     "node_modules/*",
     "build/*"

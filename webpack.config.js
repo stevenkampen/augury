@@ -40,15 +40,7 @@ module.exports = {
   },
 
   entry: {
-    'frontend': [
-      'webpack.vendor.ts',
-      './src/frontend/module'
-    ],
-    'backend': ['./src/backend/backend'],
-    'ng-validate': ['./src/utils/ng-validate'],
-    'devtools': ['./src/devtools/devtools'],
-    'content-script': ['./src/content-script'],
-    'background': ['./src/channel/channel', './src/sentry-connection/sentry-connection']
+    'background': ['./src/browser-action'],
   },
 
   // Config for our build files
