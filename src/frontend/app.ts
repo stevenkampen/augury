@@ -271,7 +271,7 @@ export class App {
   }
 
   private onInspectElement(node: Node) {
-    chrome.devtools.inspectedWindow.eval(`inspect(inspectedApplication.nodeFromPath('${node.id}'))`);
+    // chrome.devtools.inspectedWindow.eval(`inspect(inspectedApplication.nodeFromPath('${node.id}'))`);
   }
 
   private onCollapseChildren(node: Node) {

@@ -52,7 +52,7 @@ export class DirectConnection {
 
   private remoteExecute(code: string): Promise<any> {
     return new Promise((resolve, reject) => {
-      type ExceptionInfo = chrome.devtools.inspectedWindow.EvaluationExceptionInfo;
+      type ExceptionInfo = null; // chrome.devtools.inspectedWindow.EvaluationExceptionInfo;
 
       const handler = (result, exceptionInfo: ExceptionInfo) => {
         if (exceptionInfo &&
@@ -65,7 +65,7 @@ export class DirectConnection {
         }
       };
 
-      chrome.devtools.inspectedWindow.eval(code, handler);
+      // chrome.devtools.inspectedWindow.eval(code, handler);
     });
   }
 }

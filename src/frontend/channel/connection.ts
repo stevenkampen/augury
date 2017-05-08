@@ -20,7 +20,7 @@ let connection: chrome.runtime.Port;
 const post = <T>(message: Message<T>) =>
   connection.postMessage(
     Object.assign({}, message, {
-      tabId: chrome.devtools.inspectedWindow.tabId,
+      tabId: null, // chrome.devtools.inspectedWindow.tabId,
     }));
 
 export const reconnect = (): Promise<void> => {
