@@ -12,7 +12,6 @@
     "no-bitwise": false,
     "no-console": [true,
       "debug",
-      "info",
       "time",
       "timeEnd",
       "trace"

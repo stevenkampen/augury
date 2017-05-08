@@ -91,6 +91,13 @@ export class App {
     this.options.load().then(() => this.changeDetector.detectChanges());
 
     this.viewState.changes.subscribe(() => this.changeDetector.detectChanges());
+
+    window.addEventListener('message', (event) => {
+      if (event.data === 'HANDSHAKE') {
+        event.source.postMessage('HANDSHAKE_REPONSE', '*');
+      }
+    });
+    console.info('LISTENER_LOADED');
   }
 
   private hasContent() {

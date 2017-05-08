@@ -51,6 +51,8 @@ key.pem
 .vscode/
 
 # build output
+app/build
+extension/build
 *.crx
-augury.zip
-download.html
+augury-app.zip
+augury-extension.zip

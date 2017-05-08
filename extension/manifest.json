@@ -1,35 +1,23 @@
 {
   "name": "Augury",
+  "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDnpv9NmBSfhC5Ic2QWsN9lKIMT9uQwXiJ5SLyBVLo1VxvL/9yy5V9K6OodU40e4hy4sc6WjvWohEXh6Zve9ybsy+eNb9yAYcYd19G3UwKHr0WovCgYaeOuTH0KWlz1mlKnZ8vp+K5ej+mKq9Bn+4FYRI7I38D1jMOkwxe6/qCtxQIDAQAB",
   "short_name": "Augury",
   "version": "1.7.0",
-  "description": "Extends the Developer Tools, adding tools for debugging and profiling Angular 2.0 applications.",
+  "description": "The Angular Debugger",
+  "externally_connectable": { "ids": [ "eaffpceojnlfkhkjpadlemhdjjgaafhe" ] },
   "permissions": [
-    "storage"
+    "activeTab"
   ],
   "browser_action": {
     "default_icon": "images/augury.png",
-    "default_popup": "popup.html"
+    "default_title": "Run Augury"
   },
-  "devtools_page": "index.html",
   "background": {
     "scripts": [
-      "build/background.js"
+      "build/extension-background.js"
     ],
     "persistent": false
   },
-  "content_scripts": [{
-    "matches": [
-      "<all_urls>"
-    ],
-    "js": [
-      "build/content-script.js"
-    ],
-    "run_at": "document_end"
-  }],
-  "web_accessible_resources": [
-    "node_modules/*",
-    "build/*"
-  ],
   "manifest_version": 2,
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "icons": {

@@ -1,0 +1,20 @@
+{
+  "name": "Augury",
+  "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDHQrlJzwW0Qynf/TfyoNj1v3nqNw/tjZlFR1Nx+geJP9RXWE60sgQn6UdIcEyUhO6y7mfeHVf2G+rNnzDq31kNOydEPveHt0yckbzpa4eavKB5zY7iuXfqovGer1On7/DkgadcUrJWlVXyfLqmDiIA+N2IKjR0n75enaDjJVgkEQIDAQAB",
+  "short_name": "Augury",
+  "version": "1.7.0",
+  "description": "The Angular Debugger",
+  "externally_connectable": { "ids": [ "pibldekncolopjicbocdcpeecedgjomj" ] },
+  "permissions": [
+    "webview",
+    "storage"
+  ],
+  "app": {
+    "background": {
+      "scripts": [
+        "build/app-background.js"
+      ]
+    }
+  },
+  "manifest_version": 2
+}

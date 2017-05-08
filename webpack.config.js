@@ -40,20 +40,19 @@ module.exports = {
   },
 
   entry: {
-    'frontend': [
+    'app/build/frontend': [
       'webpack.vendor.ts',
-      './src/frontend/module'
+      './src/frontend/module',
     ],
-    'backend': ['./src/backend/backend'],
-    'ng-validate': ['./src/utils/ng-validate'],
-    'devtools': ['./src/devtools/devtools'],
-    'content-script': ['./src/content-script'],
-    'background': ['./src/channel/channel', './src/sentry-connection/sentry-connection']
+    'app/build/frame': ['./src/frame'],
+    'app/build/app-background': ['./app/src/chrome-app'],
+    'app/build/backend': ['./src/backend/backend'],
+    'extension/build/extension-background': ['./extension/src/extension'],
   },
 
   // Config for our build files
   output: {
-    path: root('build'),
+    path: root('/'),
     filename: '[name].js',
     sourceMapFilename: '[name].js.map',
     chunkFilename: '[id].chunk.js'
