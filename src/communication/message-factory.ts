@@ -7,14 +7,14 @@ import {
 
 import {
   Route,
-} from '../backend/utils';
+} from '../utils';
 
 import {MessageType} from './message-type';
 
 import {
   ApplicationError,
   ApplicationErrorType,
-} from './application-error';
+} from '../errors/application-error';
 
 import {getRandomHash} from './hash';
 
@@ -42,7 +42,7 @@ const create = <T>(properties: T) =>
   properties);
 
 export abstract class MessageFactory {
-  static initialize(options?: SimpleOptions): Message<void> {
+  static initialize(options?: SimpleOptions): Message<SimpleOptions> {
     return create({
       messageType: MessageType.Initialize,
       content: options,
@@ -73,7 +73,7 @@ export abstract class MessageFactory {
     });
   }
 
-  static completeTree(tree: MutableTree): Message<MutableTree> {
+  static completeTree(tree: MutableTree): Message<any> {
     return create({
       messageType: MessageType.CompleteTree,
       content: tree.roots,
@@ -89,7 +89,7 @@ export abstract class MessageFactory {
     });
   }
 
-  static selectComponent(node: Node, requestInstance?: boolean): Message<string> {
+  static selectComponent(node: Node, requestInstance?: boolean): Message<any> {
     return create({
       messageType: MessageType.SelectComponent,
       content: {
@@ -99,7 +99,7 @@ export abstract class MessageFactory {
     });
   }
 
-  static updateProperty(path: Path, newValue): Message<{path: string, newValue}> {
+  static updateProperty(path: Path, newValue): Message<{path: (string | number)[], newValue}> {
     return create({
       messageType: MessageType.UpdateProperty,
       content: {
@@ -110,7 +110,7 @@ export abstract class MessageFactory {
   }
 
   static updateProviderProperty(path: Path, token: number | string, propertyPath: Path, newValue):
-      Message<{path: Path, token: string, propertyPath: Path, newValue}> {
+      Message<{path: Path, token: (string | number), propertyPath: Path, newValue}> {
     return create({
       messageType: MessageType.UpdateProviderProperty,
       content: {
@@ -122,7 +122,7 @@ export abstract class MessageFactory {
     });
   }
 
-  static emitValue(path: Path, value): Message<void> {
+  static emitValue(path: Path, value): Message<{path: (string | number)[], value}> {
     return create({
       messageType: MessageType.EmitValue,
       content: {
@@ -132,21 +132,21 @@ export abstract class MessageFactory {
     });
   }
 
-  static ngModules(content: {[key: string]: any}): Message<void> {
+  static ngModules(content: {[key: string]: any}): Message<{[key: string]: any}> {
     return create({
       messageType: MessageType.NgModules,
       content: content,
     });
   }
 
-  static routerTree(content: Array<Route>): Message<void> {
+  static routerTree(content: Array<Route>): Message<Array<Route>> {
     return create({
       messageType: MessageType.RouterTree,
       content: content,
     });
   }
 
-  static highlight(nodes: Array<Node>): Message<Node[]> {
+  static highlight(nodes: Array<Node>): Message<{nodes: string[]}> {
     return create({
       messageType: MessageType.Highlight,
       content: {
@@ -155,7 +155,7 @@ export abstract class MessageFactory {
     });
   }
 
-  static findDOMElement(): Message<void> {
+  static findDOMElement(): Message<{start: boolean}> {
     return create({
       messageType: MessageType.FindElement,
       content: {
@@ -164,7 +164,7 @@ export abstract class MessageFactory {
     });
   }
 
-  static foundDOMElement(node: Node): Message<void> {
+  static foundDOMElement(node: Node): Message<{node: Node, stop: boolean}> {
     return create({
       messageType: MessageType.FindElement,
       content: {
@@ -181,7 +181,7 @@ export abstract class MessageFactory {
     });
   }
 
-  static uncaughtApplicationError(error: Error): Message<ApplicationError> {
+  static uncaughtApplicationError(error: Error): Message<string> {
     return create({
       messageType: MessageType.ApplicationError,
       content: serialize(new ApplicationError(ApplicationErrorType.UncaughtException, error)),
@@ -189,7 +189,7 @@ export abstract class MessageFactory {
     });
   }
 
-  static sendUncaughtError(error: Error): Message<Error> {
+  static sendUncaughtError(error: Error): Message<string> {
     return create({
       messageType: MessageType.SendUncaughtError,
       content: serialize(error),
@@ -216,7 +216,7 @@ export abstract class MessageFactory {
       return response;
     };
 
-    const prepareError = r => ({message: r.message, stack: r.stack});
+    const prepareError = r => ({message: r.message, stack: r.stack, name: r.name });
 
     const serialization = serializeResponse
       ? Serialize.Recreator

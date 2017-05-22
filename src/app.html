@@ -1,0 +1,37 @@
+<div class="augury-container">
+  <div *ngIf="!isInPopup" class="controls">
+    <a *ngIf="!isPoppedOut" routerLink="main"
+      routerLinkActive="active">
+      <button (click)="isPoppedOut = true; popout();">Run Augury in Popout</button>
+    </a>
+  </div>
+  <div [ngStyle]="{'opacity': isPoppedOut ? 0 : 1}">
+    <div *ngIf="hasContent"
+      class="clearfix vh-100 overflow-hidden flex flex-column"
+      [ngClass]="options.theme === Theme.Dark ? 'dark' : 'light'">
+      <div class="vh-100" *ngIf="error">
+        <render-error
+          (reportError)="onReportError()"
+          [error]="error"></render-error>
+      </div>
+      <bt-app-trees #trees *ngIf="error === null"
+        class="flex flex-column flex-auto"
+        [componentState]="componentState"
+        [selectedTab]="selectedTab"
+        [selectedNode]="selectedNode"
+        [options]="options"
+        [parser]="this.parser"
+        [activateDOMSelection]="activateDOMSelection"
+        (tabChange)="onSelectedTabChange($event)"
+        (DOMSelectionChange)="onDOMSelectionChange($event)"
+        (selectNode)="onSelectNode($event)"
+        (inspectElement)="onInspectElement($event)"
+        (collapseChildren)="onCollapseChildren($event)"
+        (expandChildren)="onExpandChildren($event)">
+      </bt-app-trees>
+    </div>
+    <ng-template [ngIf]="!hasContent">
+      No components were found on the page
+    </ng-template>
+  </div>
+</div>

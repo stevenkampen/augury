@@ -1,7 +1,7 @@
-const msgpack = require('msgpack-lite');
+// const msgpack = require('msgpack-lite');
 
-export const serializeBinary = <T>(object: T): Buffer =>
-  msgpack.encode(object);
+export const serializeBinary = <T>(object: T): any => null;
+  // msgpack.encode(object);
 
-export const deserializeBinary = (buffer: Buffer) =>
-  msgpack.decode(buffer);
+export const deserializeBinary = (buffer: any) => null;
+  // msgpack.decode(buffer);

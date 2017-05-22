@@ -34,13 +34,13 @@
     "lint": "tslint 'src/**/*.ts'"
   },
   "dependencies": {
-    "@angular/common": "2.4.5",
-    "@angular/compiler": "2.4.5",
-    "@angular/core": "2.4.5",
-    "@angular/forms": "2.4.5",
-    "@angular/http": "2.4.5",
-    "@angular/platform-browser": "2.4.5",
-    "@angular/platform-browser-dynamic": "2.4.5",
+    "@angular/common": "4.1.2",
+    "@angular/compiler": "4.1.2",
+    "@angular/core": "4.1.2",
+    "@angular/forms": "4.1.2",
+    "@angular/http": "4.1.2",
+    "@angular/platform-browser": "4.1.2",
+    "@angular/platform-browser-dynamic": "4.1.2",
     "basscss": "^7.0.4",
     "basscss-border-colors": "^2.1.0",
     "basscss-type-scale": "^1.0.5",
@@ -52,9 +52,10 @@
     "expose-loader": "^0.7.1",
     "immutable": "^3.7.6",
     "rxjs": "^5.1.0",
-    "zone.js": "^0.7.6"
+    "zone.js": "^0.8.10"
   },
   "devDependencies": {
+    "@angular/router": "^4.1.2",
     "@types/chrome": "0.0.38",
     "@types/clone": "^0.1.30",
     "@types/d3": "^4.4.1",
@@ -67,6 +68,7 @@
     "autoprefixer": "^6.3.6",
     "basscss-layout": "^3.1.0",
     "clone": "^2.1.0",
+    "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.26.1",
     "d3-hierarchy": "^1.1.1",
     "d3-selection": "^1.0.3",
@@ -94,7 +96,8 @@
     "typescript": "2.1.6",
     "url-loader": "^0.5.7",
     "webpack": "1.14.0",
-    "webpack-dev-server": "1.16.2"
+    "webpack-dev-server": "1.16.2",
+    "zone.js": "^0.7.8"
   },
   "license": "MIT"
 }

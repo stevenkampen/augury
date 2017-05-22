@@ -44,16 +44,16 @@ const loadFromStorage = (): Promise<SimpleOptions> => {
   return new Promise(resolve => {
     const keys = ['componentView', 'theme'];
 
-    chrome.storage.sync.get(keys, (result: SimpleOptions) => {
-      resolve(result);
-    });
+    // chrome.storage.sync.get(keys, (result: SimpleOptions) => {
+    //   resolve(result);
+    // });
   });
 };
 
 export const saveOptions = (options: SimpleOptions) => {
   for (const key of Object.keys(options)) {
-    chrome.storage.sync.set({
-      [key]: options[key]
-    });
+    // chrome.storage.sync.set({
+    //   [key]: options[key]
+    // });
   }
 };

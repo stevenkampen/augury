@@ -1,7 +1,5 @@
-import {messageJumpContext, browserSubscribeOnce} from '../communication/message-dispatch';
 import {MessageFactory} from '../communication/message-factory';
 import {MessageType} from '../communication/message-type';
-import {send} from '../backend/indirect-connection';
 
 declare const getAllAngularTestabilities: Function;
 
@@ -11,7 +9,7 @@ const handler = () => {
   // variable getAllAngularTestabilities will be defined by Angular
   // in debug mode for an Angular application.
   if (typeof getAllAngularTestabilities === 'function') {
-    messageJumpContext(MessageFactory.frameworkLoaded());
+    // messageJumpContext(MessageFactory.frameworkLoaded());
 
     if (unsubscribe) {
       unsubscribe();
@@ -19,14 +17,6 @@ const handler = () => {
 
     return true;
   }
-
-  // We do this to make sure message is display when Augury is first opened.
-  browserSubscribeOnce(MessageType.Initialize, () => {
-    send(MessageFactory.notNgApp());
-  });
-
-  // Called each time browser is refreshed.
-  send(MessageFactory.notNgApp());
 
   return false;
 };
@@ -49,4 +39,3 @@ if (!handler()) {
 
   unsubscribe = subscribe();
 }
-

@@ -5,7 +5,7 @@ var sliceArgs = Function.prototype.call.bind(Array.prototype.slice);
 var toString = Function.prototype.call.bind(Object.prototype.toString);
 var NODE_ENV = process.env.NODE_ENV || 'production';
 var pkg = require('./package.json');
-
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 // Polyfill
 Object.assign = require('object-assign');
 
@@ -40,15 +40,14 @@ module.exports = {
   },
 
   entry: {
-    'frontend': [
-      'webpack.vendor.ts',
-      './src/frontend/module'
+    'test-app': [
+      './test-app-src/main',
     ],
-    'backend': ['./src/backend/backend'],
-    'ng-validate': ['./src/utils/ng-validate'],
-    'devtools': ['./src/devtools/devtools'],
-    'content-script': ['./src/content-script'],
-    'background': ['./src/channel/channel', './src/sentry-connection/sentry-connection']
+    'popup': [
+      'webpack.vendor.ts',
+      './src/popup'
+    ],
+    // 'server': ['./src/utils/parse-app'],
   },
 
   // Config for our build files
@@ -78,10 +77,8 @@ module.exports = {
       },
       exclude: [
         /\.min\.js$/,
-        /\.spec\.ts$/,
         /\.e2e\.ts$/,
         /web_modules/,
-        /test/,
         /node_modules\/(?!(ng2-.+))/
       ]
     }, {
@@ -117,7 +114,10 @@ module.exports = {
       'SENTRY_KEY': JSON.stringify(process.env.SENTRY_KEY),
     }),
     new OccurenceOrderPlugin(),
-    new DedupePlugin()
+    new DedupePlugin(),
+    new CopyWebpackPlugin([
+      { from: './test-app-src/index.html' }
+    ])
   ],
 
   /*

@@ -1,4 +1,4 @@
-import {Property, Dependency} from '../backend/utils/description';
+import {Property, Dependency} from '../utils/description';
 
 export interface EventListener {
   name: string;

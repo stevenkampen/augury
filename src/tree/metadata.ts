@@ -21,7 +21,7 @@ import {
   recurse,
 } from '../utils';
 
-import {isDebugElementComponent} from '../backend/utils/description';
+import {isDebugElementComponent} from '../utils/description';
 
 export enum ObjectType {
   Input = 0x1,

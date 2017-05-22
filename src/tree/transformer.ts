@@ -6,7 +6,7 @@ import {
   Dependency,
   getComponentName,
   isDebugElementComponent,
-} from '../backend/utils/description';
+} from '../utils/description';
 
 import {
   ComponentView,
@@ -27,7 +27,7 @@ import {
   injectedParameterDecorators,
 } from './decorators';
 
-import {AUGURY_TOKEN_ID_METADATA_KEY} from '../backend/utils/parse-modules';
+import {AUGURY_TOKEN_ID_METADATA_KEY} from '../utils/parse-modules';
 
 /// Transform a {@link DebugElement} or {@link DebugNode} element into a Node
 /// object that is our local representation of the combined data of those two

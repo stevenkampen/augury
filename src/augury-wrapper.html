@@ -1,0 +1,7 @@
+<div class="augury-container">
+  <a *ngIf="!isRunning && !isInPopup" routerLink="main"
+    routerLinkActive="active">
+    <button (click)="isRunning = true">Run Augury</button>
+  </a>
+  <router-outlet></router-outlet>
+</div>
