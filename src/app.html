@@ -1,7 +1,6 @@
 <div class="augury-container">
   <div *ngIf="!isInPopup" class="controls">
-    <a *ngIf="!isPoppedOut" routerLink="main"
-      routerLinkActive="active">
+    <a *ngIf="!isPoppedOut">
       <button (click)="isPoppedOut = true; popout();">Run Augury in Popout</button>
     </a>
   </div>

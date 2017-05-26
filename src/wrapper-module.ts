@@ -10,6 +10,8 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 declare const window: any;
 
 import {AuguryWrapper} from './augury-wrapper';
+import {AuguryIntermediate} from './augury-intermediate';
+
 import {AuguryModule} from './module';
 
 import {IS_IN_POPUP} from './app';
@@ -19,16 +21,23 @@ import {IS_IN_POPUP} from './app';
     BrowserModule,
     RouterModule.forRoot([
       {
-        path: 'main',
-        loadChildren: () => AuguryModule,
+        path: 'active',
+        outlet: 'augury',
+        component: AuguryIntermediate,
+        children: [
+          {
+            path: '',
+            loadChildren: () => AuguryModule,
+          }
+        ],
       }
-    ])
+    ], { enableTracing: true })
   ],
   declarations: [
     AuguryWrapper,
+    AuguryIntermediate,
   ],
   providers: [
-    Location, {provide: LocationStrategy, useClass: HashLocationStrategy},
     // { provide: ErrorHandler, useClass: UncaughtErrorHandler },
     {
       provide: IS_IN_POPUP,
