@@ -1,0 +1,1 @@
+window.postMessage('MESSAGE_FROM_INSPECTED_APPLICATION', '*');

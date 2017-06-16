@@ -1,0 +1,17 @@
+{
+  "name": "augury-firefox",
+  "version": "1.0.0",
+  "description": "A POC of Augury as a firefox extension.",
+  "scripts": {
+    "test": "echo \"10,000 tests passed!\"",
+    "build": "webpack",
+    "dev": "webpack --colors --display-error-details --display-cached --watch"
+  },
+  "devDependencies": {
+    "webpack": "^2.3.2"
+  },
+  "dependencies": {
+    "typescript": "2.3.4",
+    "ts-loader": "2.1.0"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "version": "2.3.4",
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "compilerOptions": {
+    "lib": ["es6", "dom"],
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "listFiles": false
+  },
+  "exclude": [
+    "node_modules",
+    "addon"
+  ]
+}
